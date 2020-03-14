@@ -1,14 +1,21 @@
 // imports always go first - if we're importing anything
 import ChatMessage from './modules/ChatMessage.js';
-let container = document.querySelector(".form-container");
-let button = document.querySelector("input[type='submit']");
+
+var objDiv = document.querySelector(".messages");
+objDiv.scrollTop = objDiv.scrollHeight;
+var today = new Date();
+var now = today.getHours() + ":" + today.getMinutes();
 
 
 const socket = io();
 
 function setUserId({sID, message}) {
     vm.socketID = sID;
+    let messageField = document.querySelector("section.messages");
+    messageField.innerHTML += `<p class="server-message">a user has connected</p>`;
 }
+
+
 
 function runDisconnectMessage(packet){
     let messageField = document.querySelector("section.messages");
@@ -17,16 +24,12 @@ function runDisconnectMessage(packet){
     // vm.messages.push(msg);
 }
 
+
 function appendNewMessage(msg) {
     vm.messages.push(msg);
 }
-function typingMessage(packet){
-    
-}
 
-function toggleSize() {
-    container.classList.toggle("idle");
-}
+
 
 
 const vm = new Vue({
@@ -55,11 +58,14 @@ const vm = new Vue({
          },
 
         dispatchMessage() {
+            var today = new Date();
+            now = today.getHours() + ":" + today.getMinutes();
             console.log('handle send message');
 
             socket.emit('chat_message', { 
                 content: this.message,
-                name: this.nickName || "anonymous"
+                name: this.nickName || "anonymous",
+                time: now
                 // || is called a doyble pipe and works as an OR operator
             })
 
@@ -80,4 +86,4 @@ const vm = new Vue({
 socket.addEventListener('connected', setUserId);
 socket.addEventListener('user_disconnect', runDisconnectMessage);
 socket.addEventListener('new_message', appendNewMessage);
-socket.addEventListener()
+socket.addEventListener('new_message', updateTime);
