@@ -13,6 +13,20 @@
 
 .my-message {
     float: right !important;
-    background-color: #86bf9d;
+    background-color: #147efb;
     color: white;
+    transition: all .5s;
+}
+
+.server-message {
+    font-style: italic;
+    font-size: small;
+    width: 20%;
+    padding: 8px 12px;
+    background-color: white; 
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    text-align: center;
+    clear: both;
 }

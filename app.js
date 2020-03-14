@@ -1,5 +1,7 @@
+
 var express = require('express');
 var app = express();
+
 //import the socket.io
 const io = require('socket.io')();
 // instantiate the socket.io library right away with the () method -> makes it run 
@@ -30,7 +32,7 @@ io.on('connection', function(socket) {
     // msg is the incoming message from that user
     socket.on('chat_message', function(msg) {
         console.log(msg);
-
+        
         //when we get a new message send it to  everyone so they see it
         // io is the swithboard operator making sure eveyone whos connected gets the messages
         io.emit('new_message', { id: socket.id, message: msg})
@@ -39,8 +41,10 @@ io.on('connection', function(socket) {
     //listen for a disconnection
     socket.on('disconnect', function() {
         console.log('a user disconnected');
+        
 
         message = `${socket.id} has left the chat!`;
         io.emit('user_disconnect', message);
     })
 })
+

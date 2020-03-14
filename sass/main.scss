@@ -10,21 +10,31 @@ body { font: 16px Helvetica, Arial; }
 main { 
 	display: flex;
 	height: 100%;
-	flex-direction: row;
+	flex-direction: column-reverse;
 }
 .form-container, .messages { padding: 20px; }
 .form-container { 
 	flex: 1; 
-	border: 6px solid #bfcfd6;
-	background-color: #e3edf1;
+	// border: 6px solid #bfcfd6;
+	background-color: #6092ff;
 
-	label { display: block; margin-bottom: 0.5rem; }
+	label { 
+		display: block; 
+		margin-bottom: 0.5rem;
+		color: white; 
+	}
+}
+
+.idle{
+	height: 50px;
 }
 
 .messages { 
 	flex: 2;
 	background-color: #eee;
-	border: 6px solid #e2e0e0; 
+	background-image: url("../images/pattern.png");
+	// border: 6px solid #e2e0e0; 
+	overflow-y: auto;
 }
 
 input, textarea { 
@@ -38,7 +48,10 @@ input, textarea {
 	border-style: solid;
 }
 
-textarea { height: 135px; }
+textarea { 
+	height: 135px; 
+	transition: all .5s;
+}
 
 
 
@@ -50,7 +63,7 @@ form {
 	input[type=submit] { 
 		width: auto; 
 		padding: 10px; 
-		background-color: rgb(75, 200, 17);
+		background-color: #147efb;
 		margin-top: 1rem; 
 		border-radius: 8px;
 		color: white;
@@ -68,5 +81,5 @@ form {
 }
 
 // imports
-
+ 
 @import 'modules/_message';

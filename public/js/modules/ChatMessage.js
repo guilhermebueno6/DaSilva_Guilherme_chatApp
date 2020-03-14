@@ -7,7 +7,8 @@ export default {
     template: `
     <p class="new-message" :class="{'my-message' : matchedID }" >
     <span>{{msg.message.name}} says:</span>
-    {{msg.message.content}}</p>
+    {{msg.message.content}}
+    </span id="time">{{msg.message.time}}</p>
     `,
 
     data: function() {
