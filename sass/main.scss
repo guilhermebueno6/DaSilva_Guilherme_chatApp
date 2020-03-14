@@ -35,7 +35,9 @@ main {
 	background-image: url("../images/pattern.png");
 	// border: 6px solid #e2e0e0; 
 	overflow-y: auto;
+	
 }
+
 
 input, textarea { 
 	display: block; 
@@ -53,6 +55,10 @@ textarea {
 	transition: all .5s;
 }
 
+#time{
+	font-size: 10px;
+	text-align: end;
+}
 
 
 form {
